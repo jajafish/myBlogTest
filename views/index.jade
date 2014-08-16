@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= hello
+  p Welcome to hello
+
+
+
+script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+script(src='http://localhost:80/socket.io/socket.io.js')
+script.
+    var socket = io.connect("http://localhost:1025");
+    socket.on("news", function(data) {
+        $("body").append('<p>' + data.msg + '</p>');
+    })
